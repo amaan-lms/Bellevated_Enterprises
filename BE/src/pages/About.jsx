@@ -46,7 +46,7 @@ export default function About() {
             <p className="text-2xl md:text-4xl text-gray-200 font-light leading-tight tracking-tight">
               Bellevated Enterprises was founded on the belief that <span className="text-[#C9A24D] font-medium">survival was never the standard.</span>
             </p>
-            <p className="text-lg text-gray-500 leading-relaxed font-light">
+            <p className="text-lg text-gray-400 leading-relaxed font-light">
               We help individuals and businesses break cycles that drain life and replace them with opportunity, ownership, and growth. Whether through logistics or consulting, we operate as a catalyst for your God-given potential.
             </p>
           </motion.div>

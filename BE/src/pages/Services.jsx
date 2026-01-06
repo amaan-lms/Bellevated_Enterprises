@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+
 import { 
   Truck, 
   ShieldCheck, 
@@ -106,9 +108,12 @@ export default function Services() {
                 ))}
               </ul>
 
-              <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white group-hover:text-[#C9A24D] transition-colors">
+             <NavLink
+                to="/contact"
+                className="relative z-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white group-hover:text-[#C9A24D] transition-colors"
+              >
                 Inquire Now <ChevronRight size={18} />
-              </button>
+              </NavLink>
 
               {/* Subtle card glow */}
               <div className="absolute inset-0 bg-[#C9A24D]/5 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />

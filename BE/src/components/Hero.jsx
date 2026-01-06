@@ -22,7 +22,7 @@ export default function Hero() {
     <section className="bg-black text-white overflow-hidden">
 
       {/* 1. HERO SECTION: PARALLAX & DEPTH */}
-      <div className="relative min-h-screen flex items-center justify-center pt-7">
+      <div className="relative min-h-screen flex items-center justify-center pt-20">
         <motion.div
           style={{ y: y1 }}
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 scale-110"

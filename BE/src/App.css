@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+/* Add padding to account for fixed navbar */
+body {
+  scroll-padding-top: 80px;
+}
+
+/* Alternative class for pages that need top padding */
+.page-with-navbar {
+  padding-top: 80px;
+}
+
+/* For pages with full height sections */
+.full-page-with-navbar {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

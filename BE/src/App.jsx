@@ -8,6 +8,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Consulting from "./pages/Consulting";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import React from "react";
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/consulting" element={<Consulting />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
 

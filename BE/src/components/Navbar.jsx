@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logocrop.png";
 
@@ -7,16 +7,23 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const location = useLocation();
 
-  // Detect scroll direction
+  /* -------------------- SCROLL TO TOP ON ROUTE CHANGE -------------------- */
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsOpen(false); // close mobile menu on navigation
+  }, [location.pathname]);
+
+  /* -------------------- HIDE NAV ON SCROLL DOWN -------------------- */
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setHidden(true); // scrolling down
+        setHidden(true);
       } else {
-        setHidden(false); // scrolling up
+        setHidden(false);
       }
 
       lastScrollY.current = currentScrollY;
@@ -26,7 +33,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Class helper for active links
+  /* -------------------- ACTIVE LINK STYLES -------------------- */
   const getLinkClass = ({ isActive }) =>
     `relative text-sm uppercase tracking-widest transition-colors duration-300 ${
       isActive ? "text-[#C9A24D]" : "text-gray-400 hover:text-white"
@@ -50,18 +57,15 @@ export default function Navbar() {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10"
         >
-          <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+          <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
 
-            {/* Logo */}
+            {/* LOGO */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <NavLink
-                to="/"
-                className="flex items-center gap-3 text-xl font-extrabold tracking-tighter"
-              >
+              <NavLink to="/" className="flex items-center gap-3">
                 <img
                   src={logo}
                   alt="Bellevated Enterprises Logo"
@@ -70,7 +74,7 @@ export default function Navbar() {
               </NavLink>
             </motion.div>
 
-            {/* Desktop Navigation */}
+            {/* DESKTOP NAV */}
             <nav className="hidden md:flex gap-10 items-center">
               {navLinks.map((link) => (
                 <NavLink key={link.name} to={link.path} className={getLinkClass}>
@@ -94,7 +98,7 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Mobile Toggle */}
+            {/* MOBILE TOGGLE */}
             <button
               className="md:hidden text-[#C9A24D]"
               onClick={() => setIsOpen(!isOpen)}
@@ -120,7 +124,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* MOBILE MENU */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
@@ -134,7 +138,6 @@ export default function Navbar() {
                     <NavLink
                       key={link.name}
                       to={link.path}
-                      onClick={() => setIsOpen(false)}
                       className="text-lg uppercase tracking-widest text-white hover:text-[#C9A24D]"
                     >
                       {link.name}

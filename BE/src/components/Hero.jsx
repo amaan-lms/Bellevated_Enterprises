@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Package, LineChart, Rocket, ArrowRight, ShieldCheck } from "lucide-react";
+import herobg from "../assets/herobg.jpg";
+import aboutbg from "../assets/boyd.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -27,7 +29,7 @@ export default function Hero() {
           style={{ y: y1 }}
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 scale-110"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2000')`,
+            backgroundImage: `url(${herobg})`,
             y: y1
           }}
         />
@@ -101,7 +103,7 @@ export default function Hero() {
                 whileInView={{ scale: 1, filter: "grayscale(0%)" }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 viewport={{ once: true }}
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
+                src={aboutbg}
                 alt="Leadership"
                 className="w-full h-full object-cover"
               />

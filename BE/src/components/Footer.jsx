@@ -1,12 +1,19 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/logocrop.png";
 
 export default function Footer() {
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  /* -------- SCROLL TO TOP ON ROUTE CHANGE -------- */
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   const footerNavLinkClass =
     "hover:text-[#C9A24D] transition-colors duration-300";
@@ -30,7 +37,6 @@ export default function Footer() {
             alt="Bellevated Enterprises Logo"
             className="w-16 h-16 object-contain"
           />
-
           <p className="text-sm leading-relaxed max-w-xs">
             Exist to announce opportunity and elevate people, businesses, and
             communities to their God-given potential.
@@ -43,11 +49,12 @@ export default function Footer() {
             Navigation
           </h4>
           <nav className="flex flex-col gap-3 text-sm">
-            <NavLink to="/" className={footerNavLinkClass}>Home</NavLink>
-            <NavLink to="/about" className={footerNavLinkClass}>About Us</NavLink>
-            <NavLink to="/services" className={footerNavLinkClass}>Services</NavLink>
-            <NavLink to="/consulting" className={footerNavLinkClass}>Consulting</NavLink>
-            <NavLink to="/contact" className={footerNavLinkClass}>Contact</NavLink>
+            <NavLink to="/" onClick={scrollToTop} className={footerNavLinkClass}>Home</NavLink>
+            <NavLink to="/about" onClick={scrollToTop} className={footerNavLinkClass}>About Us</NavLink>
+            <NavLink to="/services" onClick={scrollToTop} className={footerNavLinkClass}>Services</NavLink>
+            <NavLink to="/consulting" onClick={scrollToTop} className={footerNavLinkClass}>Consulting</NavLink>
+            <NavLink to="/contact" onClick={scrollToTop} className={footerNavLinkClass}>Contact</NavLink>
+           
           </nav>
         </div>
 
@@ -145,10 +152,10 @@ export default function Footer() {
             Reserved.
           </p>
           <div className="flex gap-8">
-            <NavLink to="/privacy" className="hover:text-white transition">
+            <NavLink to="/privacy" onClick={scrollToTop} className="hover:text-white transition">
               Privacy
             </NavLink>
-            <NavLink to="/terms" className="hover:text-white transition">
+            <NavLink to="/terms" onClick={scrollToTop} className="hover:text-white transition">
               Terms
             </NavLink>
           </div>

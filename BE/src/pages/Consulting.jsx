@@ -10,6 +10,8 @@ import {
   Zap,
   Anchor
 } from "lucide-react";
+import { NavLink } from "react-router-dom";
+
 import ownershipImg from "../assets/girlbgd.png";
 
 
@@ -17,6 +19,9 @@ const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
+
+const MotionNavLink = motion(NavLink);
+
 
 export default function Consulting() {
   return (
@@ -192,29 +197,29 @@ export default function Consulting() {
 
       {/* 5. CALL TO ACTION */}
       <section className="py-24 px-6 text-center bg-[#C9A24D] text-black">
-        <motion.div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-8">
-            SCHEDULE YOUR <br /> STRATEGY AUDIT
-          </h2>
+  <motion.div className="max-w-4xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-8">
+      SCHEDULE YOUR <br /> STRATEGY AUDIT
+    </h2>
 
-          <motion.a
-            href="/contact"
-            whileHover={{
-              y: -4,
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 18 }}
-            className="relative inline-block bg-black text-white px-10 py-5 font-black uppercase tracking-widest text-sm rounded-full overflow-hidden"
-          >
-            {/* Shine effect */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-700" />
+    <MotionNavLink
+      to="/contact"
+      whileHover={{
+        y: -4,
+        scale: 1.05,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 18 }}
+      className="relative inline-block bg-black text-white px-10 py-5 font-black uppercase tracking-widest text-sm rounded-full overflow-hidden"
+    >
+      {/* Shine effect */}
+      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-700" />
 
-            <span className="relative z-10">Begin Development</span>
-          </motion.a>
-        </motion.div>
-      </section>
+      <span className="relative z-10">Begin Development</span>
+    </MotionNavLink>
+  </motion.div>
+</section>
 
     </div>
   );

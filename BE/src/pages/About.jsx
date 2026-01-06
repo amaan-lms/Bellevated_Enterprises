@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+
 import { Quote, Target, Star, Shield, ArrowUpRight } from "lucide-react";
 import logo from "../assets/bgremove.png";
 
@@ -159,14 +161,23 @@ export default function About() {
       </section>
 
       {/* 5. CALL TO ACTION */}
-      <section className="py-32 px-6 text-center">
-        <motion.div >
-          <p className="text-gray-500 mb-6 uppercase tracking-[0.4em] text-[10px] font-bold">Ready to take the next step?</p>
-          <a href="/contact" className="group text-4xl md:text-5xl font-black tracking-tighter transition-all">
-            LET'S <span className="text-[#C9A24D] group-hover:italic transition-all">ELEVATE.</span>
-          </a>
-        </motion.div>
-      </section>
+     <section className="py-32 px-6 text-center">
+  <motion.div>
+    <p className="text-gray-500 mb-6 uppercase tracking-[0.4em] text-[10px] font-bold">
+      Ready to take the next step?
+    </p>
+
+    <NavLink
+      to="/contact"
+      className="group text-4xl md:text-5xl font-black tracking-tighter transition-all"
+    >
+      LET&apos;S{" "}
+      <span className="text-[#C9A24D] group-hover:italic transition-all">
+        ELEVATE.
+      </span>
+    </NavLink>
+  </motion.div>
+</section>
     </div>
   );
 }

@@ -153,17 +153,19 @@ export default function Services() {
 
       {/* 4. FINAL CALL TO ACTION */}
       <div className="py-32 px-6 text-center">
-         <motion.div 
-           className="max-w-4xl mx-auto"
-         >
-           <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-10">
-             READY FOR <span className="text-[#C9A24D]">ELITE</span> EXECUTION?
-           </h2>
-           <a href="/contact" className="inline-block bg-[#C9A24D] text-black px-6 py-4 font-black uppercase tracking-widest hover:bg-white transition-colors rounded-sm">
-             Start Your Application
-           </a>
-         </motion.div>
-      </div>
+  <motion.div className="max-w-4xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-10">
+      READY FOR <span className="text-[#C9A24D]">ELITE</span> EXECUTION?
+    </h2>
+
+    <NavLink
+      to="/contact"
+      className="inline-block bg-[#C9A24D] text-black px-6 py-4 font-black uppercase tracking-widest hover:bg-white transition-colors rounded-sm"
+    >
+      Start Your Application
+    </NavLink>
+  </motion.div>
+</div>
     </section>
   );
 }

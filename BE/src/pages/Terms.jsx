@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Terms() {
   return (
-    <div className="bg-black text-white selection:bg-[#C9A24D] selection:text-black px-10">
+    <div className="bg-black text-white selection:bg-[#C9A24D] selection:text-black">
       <section className="relative pt-32 pb-16 px-6 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
           <motion.h1

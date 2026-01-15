@@ -97,7 +97,7 @@ export default function Contact() {
               </p>
               <div className="flex items-center gap-3 text-gray-600 pt-4">
                 <Globe size={16} />
-                <span className="text-xs">Serving Clients Worldwide</span>
+                <span className="text-xs">Serving Clients Nationwide</span>
               </div>
             </div>
           </motion.div>
@@ -157,7 +157,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
            <div>
              <h3 className="text-2xl font-bold mb-2">Global Presence.</h3>
-             <p className="text-gray-500 font-light">Operating across major US hubs with international reaches.</p>
+             <p className="text-gray-500 font-light">Operating across major U.S. hubs nationwide.</p>
            </div>
            <div className="flex gap-12">
               <div className="text-center">

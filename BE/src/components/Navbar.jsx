@@ -44,6 +44,8 @@ export default function Navbar() {
     { name: "About Us", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Consulting", path: "/consulting" },
+    { name: "Request a Quote", path: "/request-quote" },
+    { name: "Driver Opportunities", path: "/driver-opportunities" },
     { name: "Contact", path: "/contact" },
   ];
 

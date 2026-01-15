@@ -53,6 +53,8 @@ export default function Footer() {
             <NavLink to="/about" onClick={scrollToTop} className={footerNavLinkClass}>About Us</NavLink>
             <NavLink to="/services" onClick={scrollToTop} className={footerNavLinkClass}>Services</NavLink>
             <NavLink to="/consulting" onClick={scrollToTop} className={footerNavLinkClass}>Consulting</NavLink>
+            <NavLink to="/request-quote" onClick={scrollToTop} className={footerNavLinkClass}>Request a Quote</NavLink>
+            <NavLink to="/driver-opportunities" onClick={scrollToTop} className={footerNavLinkClass}>Driver Opportunities</NavLink>
             <NavLink to="/contact" onClick={scrollToTop} className={footerNavLinkClass}>Contact</NavLink>
            
           </nav>

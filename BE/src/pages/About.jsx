@@ -51,6 +51,12 @@ export default function About() {
             <p className="text-lg text-gray-400 leading-relaxed font-light">
               We help individuals and businesses break cycles that drain life and replace them with opportunity, ownership, and growth. Whether through logistics or consulting, we operate as a catalyst for your God-given potential.
             </p>
+            <p className="text-lg text-gray-400 leading-relaxed font-light mt-6">
+              Our mission is simple but uncompromising: to elevate leaders at every level. We partner with corporations, small businesses, private contractors, and vision-driven individuals to provide the infrastructure, insight, and execution required to operate with confidence and integrity.
+            </p>
+            <p className="text-lg text-gray-400 leading-relaxed font-light mt-6">
+              At Bellevated Enterprises, elevation is not a slogan—it is a standard. We exist to open doors, expand capacity, and position our partners to thrive.
+            </p>
           </motion.div>
 
           {/* IMAGE CONTAINER FOR BG-REMOVED IMAGE */}
@@ -109,7 +115,7 @@ export default function About() {
                 icon: <Star size={28} />,
                 title: "Stewardship",
                 tagline: "DIVINE RESPONSIBILITY",
-                text: "Excellence is not an option—it is our responsibility to the talents and trust given to us."
+                text: "Excellence is not an option—it is our responsibility to the talents and trust given to us. We create long lasting value and develop long lasting relationships with every partner we serve."
               },
             ].map((value, i) => (
               <motion.div

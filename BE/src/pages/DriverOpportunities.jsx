@@ -10,6 +10,8 @@ import {
   Award,
   MapPin
 } from "lucide-react";
+import axios from "axios";
+
 
 const scrollbarStyles = `
   .scrollbar-black::-webkit-scrollbar {
@@ -59,15 +61,37 @@ export default function DriverOpportunities() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.agreeToTerms) {
-      alert("Please agree to the contractor terms and conditions");
-      return;
-    }
-    console.log(formData);
-    // Handle submission and DocuSign integration here
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!formData.agreeToTerms) {
+    alert("Please agree to the contractor terms and conditions");
+    return;
+  }
+
+  try {
+    await axios.post("http://localhost:5000/api/drivers", formData);
+
+    alert("Application submitted successfully!");
+
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      yearsExperience: "",
+      licenseType: "",
+      serviceAreas: "",
+      vehicleType: "",
+      availability: "",
+      agreeToTerms: false,
+    });
+
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <>

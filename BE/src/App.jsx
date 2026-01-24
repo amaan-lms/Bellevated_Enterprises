@@ -12,6 +12,9 @@ import RequestQuote from "./pages/RequestQuote";
 import DriverOpportunities from "./pages/DriverOpportunities";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Login from "./components/Login";
+import Dashboard from "./pages/User_Dashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 import React from "react";
 
 export default function App() {
@@ -33,6 +36,9 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
 

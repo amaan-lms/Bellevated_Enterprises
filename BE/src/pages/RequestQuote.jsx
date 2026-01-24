@@ -9,6 +9,8 @@ import {
   FileText,
   Building2
 } from "lucide-react";
+import axios from "axios";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -36,11 +38,29 @@ export default function RequestQuote() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log(formData);
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await axios.post("http://localhost:5000/api/quotes", formData);
+    alert("Quote request submitted successfully!");
+
+    setFormData({
+      companyName: "",
+      contactName: "",
+      email: "",
+      phone: "",
+      businessType: "",
+      serviceRequired: "",
+      projectDescription: "",
+      timeline: "",
+    });
+
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <div className="bg-black text-white selection:bg-[#C9A24D] selection:text-black">

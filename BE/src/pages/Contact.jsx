@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   Mail, 
@@ -9,8 +9,56 @@ import {
   Globe, 
   MessageSquare 
 } from "lucide-react";
+import axios from "axios";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    interestedIn: "Courier & Logistics",
+    message: ""
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/contacts", formData);
+      
+      if (response.status === 201) {
+        setSubmitStatus('success');
+        setFormData({
+          fullName: "",
+          email: "",
+          interestedIn: "Courier & Logistics",
+          message: ""
+        });
+
+        // Clear success message after 3 seconds
+        setTimeout(() => setSubmitStatus(null), 3000);
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus(null), 3000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const contactInfo = [
     { 
       icon: <Mail size={20} />, 
@@ -113,21 +161,40 @@ export default function Contact() {
               <Clock className="text-[#C9A24D]/20" size={80} />
             </div>
 
-            <form className="space-y-6 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Full Name</label>
-                  <input type="text"  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" />
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Email Address</label>
-                  <input type="email"  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" 
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Interested In</label>
-                <select className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none">
+                <select 
+                  name="interestedIn"
+                  value={formData.interestedIn}
+                  onChange={handleChange}
+                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                >
                   <option>Courier & Logistics</option>
                   <option>Credit Restoration</option>
                   <option>Business Formation</option>
@@ -137,15 +204,48 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Your Mission</label>
-                <textarea rows="4" placeholder="How can we help you rise?" className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"></textarea>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="4" 
+                  placeholder="How can we help you rise?" 
+                  required
+                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
+                ></textarea>
               </div>
 
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-sm font-semibold text-center"
+                >
+                  ✓ Message sent successfully! We'll get back to you soon.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-sm font-semibold text-center"
+                >
+                  ✗ Failed to send message. Please try again.
+                </motion.div>
+              )}
+
               <motion.button 
+                type="submit"
+                disabled={loading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-[#C9A24D] text-black font-black py-5 rounded-2xl flex items-center justify-center gap-3 uppercase tracking-widest text-sm shadow-[0_20px_40px_rgba(201,162,77,0.2)]"
+                className="w-full bg-[#C9A24D] text-black font-black py-5 rounded-2xl flex items-center justify-center gap-3 uppercase tracking-widest text-sm shadow-[0_20px_40px_rgba(201,162,77,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message <Send size={18} />
+                {loading ? "Sending..." : "Send Message"} <Send size={18} />
               </motion.button>
             </form>
           </motion.div>

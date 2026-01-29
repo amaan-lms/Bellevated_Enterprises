@@ -8,6 +8,7 @@ import {
     Shield,
     FileText, 
     Truck,
+    Mail,
     X,
     Search,
     ChevronDown
@@ -19,16 +20,19 @@ export default function AdminDashboard() {
     const [users, setUsers] = useState([]);
     const [quotes, setQuotes] = useState([]);
     const [drivers, setDrivers] = useState([]);
+    const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState("users");
     const [selectedQuote, setSelectedQuote] = useState(null);
     const [selectedDriver, setSelectedDriver] = useState(null);
+    const [selectedContact, setSelectedContact] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [stats, setStats] = useState({
         totalUsers: 0,
         totalAdmins: 0,
         totalQuotes: 0,
         totalDrivers: 0,
+        totalContacts: 0,
     });
 
     const navigate = useNavigate();
@@ -51,6 +55,7 @@ export default function AdminDashboard() {
         fetchStats();
         fetchQuotes();
         fetchDrivers();
+        fetchContacts();
     }, [navigate]);
 
     const fetchStats = async () => {
@@ -66,6 +71,7 @@ export default function AdminDashboard() {
                 totalAdmins: res.data.totalAdmins,
                 totalQuotes: res.data.totalQuotes,
                 totalDrivers: res.data.totalDrivers,
+                totalContacts: res.data.totalContacts,
             }));
         } catch (err) {
             console.error(err);
@@ -108,6 +114,19 @@ export default function AdminDashboard() {
             setDrivers(driversRes.data);
         } catch (err) {
             console.error(err);
+        }
+    };
+
+    const fetchContacts = async () => {
+        try {
+            const token = localStorage.getItem("token");
+            const contactsRes = await axios.get("http://localhost:5000/api/admin/contacts", {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            setContacts(contactsRes.data);
+        } catch (err) {
+            console.error(err);
         } finally {
             setLoading(false);
         }
@@ -147,6 +166,11 @@ export default function AdminDashboard() {
     const filteredDrivers = drivers.filter(driver =>
         `${driver.firstName} ${driver.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
         driver.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const filteredContacts = contacts.filter(contact =>
+        contact.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        contact.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (loading) {
@@ -214,7 +238,6 @@ export default function AdminDashboard() {
                         </p>
                     </div>
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handleLogout}
                         className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/50 w-full sm:w-auto justify-center"
@@ -226,12 +249,12 @@ export default function AdminDashboard() {
 
                 {/* STATS GRID */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-                    <StatCard
+                    {/* <StatCard
                         icon={Users}
                         label="Total Users"
                         value={stats.totalUsers}
                         color="bg-gradient-to-br from-blue-600/20 to-blue-600/5"
-                    />
+                    /> */}
                     <StatCard
                         icon={Shield}
                         label="Admins"
@@ -250,11 +273,17 @@ export default function AdminDashboard() {
                         value={stats.totalDrivers}
                         color="bg-gradient-to-br from-pink-600/20 to-pink-600/5"
                     />
+                    <StatCard
+                        icon={Mail}
+                        label="Contact Forms"
+                        value={stats.totalContacts}
+                        color="bg-gradient-to-br from-cyan-600/20 to-cyan-600/5"
+                    />
                 </div>
 
                 {/* TAB NAVIGATION */}
                 <div className="flex flex-wrap gap-2 mb-8 bg-gray-900/50 p-2 rounded-xl border border-white/10 backdrop-blur-md">
-                    {["users", "quotes", "drivers"].map((tab) => (
+                    {["users", "quotes", "drivers", "contacts"].map((tab) => (
                         <button
                             key={tab}
                             onClick={() => { setActiveTab(tab); setSearchTerm(""); }}
@@ -267,6 +296,7 @@ export default function AdminDashboard() {
                             {tab === "users" && <Users size={18} />}
                             {tab === "quotes" && <FileText size={18} />}
                             {tab === "drivers" && <Truck size={18} />}
+                            {tab === "contacts" && <Mail size={18} />}
                             {tab.charAt(0).toUpperCase() + tab.slice(1)}
                         </button>
                     ))}
@@ -469,6 +499,58 @@ export default function AdminDashboard() {
                             )}
                         </div>
                     )}
+
+                    {/* CONTACTS TAB */}
+                    {activeTab === "contacts" && (
+                        <div className="p-4 sm:p-6">
+                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <Mail size={28} className="text-cyan-400" />
+                                Contact Form Submissions ({filteredContacts.length})
+                            </h2>
+
+                            {filteredContacts.length === 0 ? (
+                                <div className="text-center py-12 text-gray-400">
+                                    <Mail size={48} className="mx-auto mb-4 opacity-50" />
+                                    <p>No contact submissions found</p>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                                    {filteredContacts.map((contact, idx) => (
+                                        <motion.div
+                                            key={contact._id}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: idx * 0.05 }}
+                                            className="bg-gray-800/30 border border-cyan-500/20 rounded-lg p-4 hover:border-cyan-500/40 transition-all group cursor-pointer"
+                                            onClick={() => setSelectedContact(contact)}
+                                        >
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                                <div>
+                                                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Full Name</p>
+                                                    <p className="text-white font-semibold truncate">{contact.fullName}</p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Interested In</p>
+                                                    <p className="text-white font-semibold truncate">{contact.interestedIn}</p>
+                                                </div>
+                                                <div className="sm:col-span-2">
+                                                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Email</p>
+                                                    <p className="text-white text-sm truncate">{contact.email}</p>
+                                                </div>
+                                            </div>
+                                            <motion.button
+                                                whileHover={{ x: 4 }}
+                                                onClick={(e) => { e.stopPropagation(); setSelectedContact(contact); }}
+                                                className="text-cyan-400 text-sm font-semibold flex items-center gap-1 hover:text-cyan-300 transition-colors"
+                                            >
+                                                View Details <ChevronDown size={16} className="group-hover:translate-y-1 transition-transform" />
+                                            </motion.button>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </motion.div>
             </motion.div>
 
@@ -487,7 +569,7 @@ export default function AdminDashboard() {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.95, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
+                            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                         >
                             <div className="flex justify-between items-center mb-6">
                                 <h3 className="text-2xl font-bold text-white">Quote Request Details</h3>
@@ -562,7 +644,7 @@ export default function AdminDashboard() {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.95, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
+                            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                         >
                             <div className="flex justify-between items-center mb-6">
                                 <h3 className="text-2xl font-bold text-white">Driver Application Details</h3>
@@ -620,6 +702,65 @@ export default function AdminDashboard() {
                                 <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5">
                                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Submitted</p>
                                     <p className="text-white font-semibold">{new Date(selectedDriver.createdAt).toLocaleDateString()}</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* CONTACT DETAILS MODAL */}
+            <AnimatePresence>
+                {selectedContact && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                        onClick={() => setSelectedContact(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                        >
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-2xl font-bold text-white">Contact Form Details</h3>
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={() => setSelectedContact(null)}
+                                    className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                                >
+                                    <X size={24} />
+                                </motion.button>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5">
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Full Name</p>
+                                        <p className="text-white font-semibold">{selectedContact.fullName}</p>
+                                    </div>
+                                    <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5">
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Email</p>
+                                        <p className="text-white text-sm break-all">{selectedContact.email}</p>
+                                    </div>
+                                    <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5 sm:col-span-2">
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Interested In</p>
+                                        <p className="text-white font-semibold">{selectedContact.interestedIn}</p>
+                                    </div>
+                                    <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5">
+                                        <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Submitted</p>
+                                        <p className="text-white font-semibold">{new Date(selectedContact.createdAt).toLocaleDateString()}</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gray-800/50 rounded-lg p-4 border border-white/5">
+                                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-2">Message</p>
+                                    <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">{selectedContact.message}</p>
                                 </div>
                             </div>
                         </motion.div>

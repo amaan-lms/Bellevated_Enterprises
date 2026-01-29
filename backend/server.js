@@ -34,10 +34,15 @@ app.use("/api/auth", authRoutes);
 const quoteRoutes = require("./routes/quoteRoutes");
 app.use("/api/quotes", quoteRoutes);
 
+//contact form
+const contactRoutes = require("./routes/contactRoutes");
+app.use("/api/contacts", contactRoutes);
 
 //driver applications
 const driverRoutes = require("./routes/driverRoutes");
 app.use("/api/drivers", driverRoutes);
+
+
 
 
 //admin routes

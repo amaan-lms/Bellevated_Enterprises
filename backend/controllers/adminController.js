@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const QuoteRequest = require("../models/QuoteRequest");
 const DriverApplication = require("../models/DriverApplication");
+const Contact = require("../models/Contact");
 
 
 // GET ALL USERS
@@ -25,12 +26,14 @@ exports.getStats = async (req, res) => {
     const totalAdmins = await User.countDocuments({ role: "admin" });
     const totalQuotes = await QuoteRequest.countDocuments();
     const totalDrivers = await DriverApplication.countDocuments();
+    const totalContacts = await Contact.countDocuments();
 
     res.json({
       totalUsers,
       totalAdmins,
       totalQuotes,
-      totalDrivers
+      totalDrivers,
+      totalContacts
     });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -54,6 +57,17 @@ exports.getDrivers = async (req, res) => {
   try {
     const drivers = await DriverApplication.find().sort({ createdAt: -1 });
     res.json(drivers);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+// GET ALL CONTACT SUBMISSIONS
+exports.getContacts = async (req, res) => {
+  try {
+    const contacts = await Contact.find().sort({ createdAt: -1 });
+    res.json(contacts);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
+
 import axios from "axios";
 
 
@@ -21,6 +22,9 @@ export default function Login() {
         password: "",
     });
 
+    const baseURL=import.meta.env.VITE_API_BASE_URL;
+
+    
     // Sign up form state
     const [signupForm, setSignupForm] = useState({
         firstName: "",
@@ -45,7 +49,7 @@ export default function Login() {
 
         try {
             // Simulate API call
-            const res = await axios.post("https://bellevated-enterprises.onrender.com/api/auth/login", {
+            const res = await axios.post(`${baseURL}/api/auth/login`, {
                 email: loginForm.email,
                 password: loginForm.password,
             });
@@ -118,7 +122,7 @@ export default function Login() {
             }
 
             // Simulate API call
-            await axios.post("http://localhost:5000/api/auth/signup", {
+            await axios.post(`${baseURL}/api/auth/signup`, {
                 firstName: signupForm.firstName,
                 lastName: signupForm.lastName,
                 email: signupForm.email,

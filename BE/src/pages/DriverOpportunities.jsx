@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 
 
+
 const scrollbarStyles = `
   .scrollbar-black::-webkit-scrollbar {
     width: 8px;
@@ -69,8 +70,11 @@ export default function DriverOpportunities() {
     return;
   }
 
+      const baseURL=import.meta.env.VITE_API_BASE_URL;
+
+
   try {
-    await axios.post("http://localhost:5000/api/drivers", formData);
+    await axios.post(`${baseURL}/api/drivers`, formData);
 
     alert("Application submitted successfully!");
 

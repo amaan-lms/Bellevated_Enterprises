@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  Globe, 
-  MessageSquare 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
+  Globe,
+  MessageSquare
 } from "lucide-react";
 import axios from "axios";
+
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -35,9 +37,12 @@ export default function Contact() {
     setLoading(true);
     setSubmitStatus(null);
 
+        const baseURL=import.meta.env.VITE_API_BASE_URL;
+
+
     try {
-      const response = await axios.post("http://localhost:5000/api/contacts", formData);
-      
+      const response = await axios.post(`${baseURL}/api/contacts`, formData);
+
       if (response.status === 201) {
         setSubmitStatus('success');
         setFormData({
@@ -60,40 +65,40 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { 
-      icon: <Mail size={20} />, 
-      label: "Direct Strategy", 
+    {
+      icon: <Mail size={20} />,
+      label: "Direct Strategy",
       value: "ceo@bellevated.com",
-      sub: "Typical response: < 2hrs" 
+      sub: "Typical response: < 2hrs"
     },
-    { 
-      icon: <Phone size={20} />, 
-      label: "Direct Line", 
+    {
+      icon: <Phone size={20} />,
+      label: "Direct Line",
       value: "678-388-3964",
-      sub: "Text or Call available" 
+      sub: "Text or Call available"
     },
-    { 
-      icon: <MessageSquare size={20} />, 
-      label: "Support Desk", 
+    {
+      icon: <MessageSquare size={20} />,
+      label: "Support Desk",
       value: "(888) 200-0472",
-      sub: "24/7 Priority Support" 
+      sub: "24/7 Priority Support"
     }
   ];
 
   return (
     <div className="bg-black text-white selection:bg-[#C9A24D] selection:text-black">
-      
+
       {/* 1. CINEMATIC HEADER */}
       <section className="pt-32 pb-12 px-6">
         <div className="max-w-7xl mx-auto text-center md:text-left">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-[#C9A24D] font-mono text-sm tracking-[0.5em] uppercase mb-4 block"
           >
             Connection
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black tracking-tighter leading-none"
@@ -106,16 +111,16 @@ export default function Contact() {
       {/* 2. CONTACT HUB (SPLIT SECTION) */}
       <section className="pb-10 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
-          
+
           {/* Left Side: Brand Info */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-12"
           >
             <p className="text-xl text-gray-400 font-light leading-relaxed max-w-md">
-              Whether you're looking for elite courier contracts or strategic 
+              Whether you're looking for elite courier contracts or strategic
               business formation, we are ready to elevate your mission.
             </p>
 
@@ -151,7 +156,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Right Side: The Lead Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -165,31 +170,31 @@ export default function Contact() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Full Name</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" 
+                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Email Address</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors" 
+                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Interested In</label>
-                <select 
+                <select
                   name="interestedIn"
                   value={formData.interestedIn}
                   onChange={handleChange}
@@ -204,12 +209,12 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase ml-2">Your Mission</label>
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="4" 
-                  placeholder="How can we help you rise?" 
+                  rows="4"
+                  placeholder="How can we help you rise?"
                   required
                   className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
                 ></textarea>
@@ -238,7 +243,7 @@ export default function Contact() {
                 </motion.div>
               )}
 
-              <motion.button 
+              <motion.button
                 type="submit"
                 disabled={loading}
                 whileHover={{ scale: 1.02 }}
@@ -255,20 +260,20 @@ export default function Contact() {
       {/* 3. MAP / SOCIAL PROOF STRIP */}
       <section className="bg-zinc-950 py-20 px-6 border-y border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-           <div>
-             <h3 className="text-2xl font-bold mb-2">Global Presence.</h3>
-             <p className="text-gray-500 font-light">Operating across major U.S. hubs nationwide.</p>
-           </div>
-           <div className="flex gap-12">
-              <div className="text-center">
-                <p className="text-3xl font-black text-[#C9A24D]">24/7</p>
-                <p className="text-[10px] text-gray-600 uppercase tracking-widest">Available</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-black text-white">100%</p>
-                <p className="text-[10px] text-gray-600 uppercase tracking-widest">Secure</p>
-              </div>
-           </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-2">Global Presence.</h3>
+            <p className="text-gray-500 font-light">Operating across major U.S. hubs nationwide.</p>
+          </div>
+          <div className="flex gap-12">
+            <div className="text-center">
+              <p className="text-3xl font-black text-[#C9A24D]">24/7</p>
+              <p className="text-[10px] text-gray-600 uppercase tracking-widest">Available</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-black text-white">100%</p>
+              <p className="text-[10px] text-gray-600 uppercase tracking-widest">Secure</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

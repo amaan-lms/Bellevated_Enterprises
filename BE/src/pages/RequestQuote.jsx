@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 
 
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
@@ -41,8 +42,11 @@ export default function RequestQuote() {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
+      const baseURL=import.meta.env.VITE_API_BASE_URL;
+
+
   try {
-    await axios.post("http://localhost:5000/api/quotes", formData);
+    await axios.post(`${baseURL}/api/quotes`, formData);
     alert("Quote request submitted successfully!");
 
     setFormData({

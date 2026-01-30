@@ -14,7 +14,8 @@ import {
     ChevronDown
 } from "lucide-react";
 import axios from "axios";
-
+     
+ 
 export default function AdminDashboard() {
     const [admin, setAdmin] = useState(null);
     const [users, setUsers] = useState([]);
@@ -58,10 +59,13 @@ export default function AdminDashboard() {
         fetchContacts();
     }, [navigate]);
 
+        const baseURL=import.meta.env.VITE_API_BASE_URL;
+
+
     const fetchStats = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await axios.get("http://localhost:5000/api/admin/stats", {
+            const res = await axios.get(`${baseURL}/api/admin/stats`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -81,7 +85,7 @@ export default function AdminDashboard() {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem("token");
-            const usersRes = await axios.get("http://localhost:5000/api/admin/users", {
+            const usersRes = await axios.get(`${baseURL}/api/admin/users`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -94,7 +98,7 @@ export default function AdminDashboard() {
     const fetchQuotes = async () => {
         try {
             const token = localStorage.getItem("token");
-            const quotesRes = await axios.get("http://localhost:5000/api/admin/quotes", {
+            const quotesRes = await axios.get(`${baseURL}/api/admin/quotes`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -107,7 +111,7 @@ export default function AdminDashboard() {
     const fetchDrivers = async () => {
         try {
             const token = localStorage.getItem("token");
-            const driversRes = await axios.get("http://localhost:5000/api/admin/drivers", {
+            const driversRes = await axios.get(`${baseURL}/api/admin/drivers`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -120,7 +124,7 @@ export default function AdminDashboard() {
     const fetchContacts = async () => {
         try {
             const token = localStorage.getItem("token");
-            const contactsRes = await axios.get("http://localhost:5000/api/admin/contacts", {
+            const contactsRes = await axios.get(`${baseURL}/api/admin/contacts`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -141,7 +145,7 @@ export default function AdminDashboard() {
     const handleDeleteUser = async (userId) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
+            await axios.delete(`${baseURL}/api/admin/users/${userId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

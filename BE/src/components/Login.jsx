@@ -45,7 +45,7 @@ export default function Login() {
 
         try {
             // Simulate API call
-            const res = await axios.post("http://localhost:5000/api/auth/login", {
+            const res = await axios.post("https://bellevated-enterprises.onrender.com/api/auth/login", {
                 email: loginForm.email,
                 password: loginForm.password,
             });

@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log(err));
 
 
-
+    
 // Routes----------
 //login and signup
 const authRoutes = require("./routes/authRoutes");

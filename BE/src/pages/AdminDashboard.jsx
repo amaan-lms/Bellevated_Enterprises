@@ -241,14 +241,14 @@ export default function AdminDashboard() {
                             Welcome back, <span className="text-[#C9A24D] font-semibold">{admin?.firstName}</span>
                         </p>
                     </div>
-                    <motion.button
+                    {/* <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={handleLogout}
                         className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/50 w-full sm:w-auto justify-center"
                     >
                         <LogOut size={18} />
                         Logout
-                    </motion.button>
+                    </motion.button> */}
                 </div>
 
                 {/* STATS GRID */}

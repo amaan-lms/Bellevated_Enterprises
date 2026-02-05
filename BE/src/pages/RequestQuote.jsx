@@ -35,35 +35,56 @@ export default function RequestQuote() {
     timeline: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    setLoading(true);
+    setSubmitStatus(null);
 
-      const baseURL=import.meta.env.VITE_API_BASE_URL;
+    const baseURL = import.meta.env.VITE_API_BASE_URL;
 
+    try {
+      const response = await axios.post(`${baseURL}/api/quotes`, formData);
 
-  try {
-    await axios.post(`${baseURL}/api/quotes`, formData);
-    alert("Quote request submitted successfully!");
+      if (response.data.success) {
+        setSubmitStatus('success');
+        alert(response.data.message); // Shows: "Quote request submitted successfully. Please check your email."
 
-    setFormData({
-      companyName: "",
-      contactName: "",
-      email: "",
-      phone: "",
-      businessType: "",
-      serviceRequired: "",
-      projectDescription: "",
-      timeline: "",
-    });
+        // Reset form
+        setFormData({
+          companyName: "",
+          contactName: "",
+          email: "",
+          phone: "",
+          businessType: "",
+          serviceRequired: "",
+          projectDescription: "",
+          timeline: "",
+        });
+      } else {
+        setSubmitStatus('error');
+        alert(response.data.message || "Failed to submit quote request");
+      }
 
-  } catch (error) {
-    alert("Something went wrong. Please try again.");
-  }
-};
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error("Quote submission error:", error);
+
+      if (error.response?.data?.message) {
+        alert(error.response.data.message);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
@@ -245,14 +266,47 @@ export default function RequestQuote() {
 
               <motion.button
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: loading ? 1 : 1.02 }}
+                whileTap={{ scale: loading ? 1 : 0.98 }}
                 type="submit"
-                className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-white transition-all rounded-2xl flex items-center justify-center gap-3"
+                disabled={loading}
+                className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-white transition-all rounded-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={20} />
-                Submit Quote Request
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-black border-t-transparent"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    Submit Quote Request
+                  </>
+                )}
               </motion.button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-sm font-semibold text-center"
+                >
+                  ✓ Quote request submitted! Please check your email for confirmation and PDF brochure.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-sm font-semibold text-center"
+                >
+                  ✗ Failed to submit quote request. Please try again.
+                </motion.div>
+              )}
             </form>
           </motion.div>
 

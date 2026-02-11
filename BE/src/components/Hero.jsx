@@ -27,13 +27,13 @@ export default function Hero() {
       <div className="relative min-h-screen flex items-center justify-center pt-7">
         <motion.div
           style={{ y: y1 }}
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50 scale-110"
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 scale-110"
           style={{
             backgroundImage: `url(${herobg})`,
             y: y1
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/50 z-10" />
 
         <motion.div
           initial="hidden"
@@ -51,7 +51,7 @@ export default function Hero() {
 
           <motion.h1
             variants={fadeInUp}
-            className="text-4xl md:text-7xl font-black leading-[0.9] tracking-tighter mb-8"
+            className="text-4xl md:text-6xl font-black leading-[0.9] tracking-tighter mb-8"
           >
             DELIVERING <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A24D] via-[#f3d692] to-[#C9A24D]">
@@ -63,7 +63,7 @@ export default function Hero() {
 
           <motion.p
             variants={fadeInUp}
-            className="mt-4 text-gray-400 text-md md:text-xl max-w-2xl mx-auto leading-relaxed font-medium"
+            className="mt-4 text-gray-300 text-md md:text-xl max-w-2xl mx-auto leading-relaxed font-medium"
           >
             Bellevated Enterprises bridges the gap between logistical precision
             and entrepreneurial growth. We move missions, not just packages.
@@ -181,7 +181,7 @@ export default function Hero() {
                 className="
                 group relative p-12
                 bg-gradient-to-b from-white/5 to-transparent
-                border border-white/10
+                border-2 border-white/20
                 rounded-3xl
                 transition-all duration-500
               "

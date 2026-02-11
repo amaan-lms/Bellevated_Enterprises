@@ -114,7 +114,7 @@ export default function RequestQuote() {
       </section>
 
       {/* FORM SECTION */}
-      <section className="py-32 px-6">
+      <section className="py-28 rounded-t-[100px] px-6 bg-white ">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-16">
           {/* FORM */}
           <motion.div
@@ -136,7 +136,7 @@ export default function RequestQuote() {
                     value={formData.companyName}
                     onChange={handleChange}
                     placeholder="Your organization"
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors"
                     required
                   />
                 </motion.div>
@@ -151,7 +151,7 @@ export default function RequestQuote() {
                     value={formData.contactName}
                     onChange={handleChange}
                     placeholder="Your name"
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors"
                     required
                   />
                 </motion.div>
@@ -168,7 +168,7 @@ export default function RequestQuote() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors"
                     required
                   />
                 </motion.div>
@@ -183,7 +183,7 @@ export default function RequestQuote() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(555) 000-0000"
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors"
                     required
                   />
                 </motion.div>
@@ -197,7 +197,7 @@ export default function RequestQuote() {
                   name="businessType"
                   value={formData.businessType}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                  className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                   required
                 >
                   <option value="">Select your industry</option>
@@ -218,7 +218,7 @@ export default function RequestQuote() {
                   name="serviceRequired"
                   value={formData.serviceRequired}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                  className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                   required
                 >
                   <option value="">Select a service</option>
@@ -240,7 +240,7 @@ export default function RequestQuote() {
                   value={formData.projectDescription}
                   onChange={handleChange}
                   placeholder="Tell us about your project, timeline, and specific needs..."
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
+                  className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
                   required
                 />
               </motion.div>
@@ -253,7 +253,7 @@ export default function RequestQuote() {
                   name="timeline"
                   value={formData.timeline}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                  className="w-full bg-white border border-black/30 rounded-2xl p-4 text-black/50 focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                   required
                 >
                   <option value="">Select timeline</option>
@@ -270,7 +270,7 @@ export default function RequestQuote() {
                 whileTap={{ scale: loading ? 1 : 0.98 }}
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-white transition-all rounded-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-yellow-500 transition-all rounded-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
@@ -320,12 +320,12 @@ export default function RequestQuote() {
           >
             <motion.div
               variants={fadeInUp}
-              className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
+              className="bg-white border-2 border-yellow-500/20 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#C9A24D]/10 border border-[#C9A24D]/20 flex items-center justify-center text-[#C9A24D] mb-6">
                 <Mail size={24} />
               </div>
-              <h3 className="text-lg font-bold mb-2">Email Us</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Email Us</h3>
               <p className="text-gray-400 text-sm mb-4">For general inquiries and quote requests</p>
               <a href="mailto:info@bellevated.com" className="text-[#C9A24D] hover:underline font-medium">
                 info@bellevated.com
@@ -334,12 +334,12 @@ export default function RequestQuote() {
 
             <motion.div
               variants={fadeInUp}
-              className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
+              className="bg-white border-2 border-yellow-500/20 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#C9A24D]/10 border border-[#C9A24D]/20 flex items-center justify-center text-[#C9A24D] mb-6">
                 <Phone size={24} />
               </div>
-              <h3 className="text-lg font-bold mb-2">Call Us</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Call Us</h3>
               <p className="text-gray-400 text-sm mb-4">Mon - Fri, 9AM - 5PM</p>
               <a href="tel:+1234567890" className="text-[#C9A24D] hover:underline font-medium">
                 (555) 123-4567
@@ -348,12 +348,12 @@ export default function RequestQuote() {
 
             <motion.div
               variants={fadeInUp}
-              className="bg-zinc-950 border border-white/10 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
+              className="bg-white border-2 border-yellow-500/20 rounded-3xl p-8 hover:border-[#C9A24D]/30 transition-colors"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#C9A24D]/10 border border-[#C9A24D]/20 flex items-center justify-center text-[#C9A24D] mb-6">
                 <Clock size={24} />
               </div>
-              <h3 className="text-lg font-bold mb-2">Response Time</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Response Time</h3>
               <p className="text-gray-400 text-sm">
                 We typically respond to quote requests within 24-48 business hours.
               </p>

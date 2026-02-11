@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-import ownershipImg from "../assets/girlbgd.png";
+import ownershipImg from "../assets/consultent.png";
 
 
 const fadeInUp = {
@@ -135,7 +135,7 @@ export default function Consulting() {
               <img
                 src={ownershipImg}
                 alt="Foundational Ownership Illustration"
-                className="absolute bottom-0 right-0 w-48 md:w-56 opacity-90 pointer-events-none"
+                className=" absolute bottom-0 right-0 w-48 md:w-90  opacity-90 pointer-events-none"
               />
             </motion.div>
 

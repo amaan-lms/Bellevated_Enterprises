@@ -160,7 +160,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative p-10 md:p-14 bg-zinc-900/50 border border-white/10 rounded-[3rem] backdrop-blur-xl"
+            className="relative p-10 md:p-14 bg-white border border-gray-300 rounded-[3rem] backdrop-blur-xl text-black"
           >
             <div className="absolute top-0 right-0 p-8">
               <Clock className="text-[#C9A24D]/20" size={80} />
@@ -176,7 +176,7 @@ export default function Contact() {
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -187,7 +187,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                   />
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function Contact() {
                   name="interestedIn"
                   value={formData.interestedIn}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                  className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                 >
                   <option>Courier & Logistics</option>
                   <option>Credit Restoration</option>
@@ -216,7 +216,7 @@ export default function Contact() {
                   rows="4"
                   placeholder="How can we help you rise?"
                   required
-                  className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
+                  className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
                 ></textarea>
               </div>
 

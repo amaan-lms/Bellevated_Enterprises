@@ -181,7 +181,7 @@ export default function DriverOpportunities() {
         </section>
 
         {/* APPLICATION FORM SECTION */}
-        <section className="py-32 px-6">
+        <section className="py-32 px-6 bg-white rounded-t-[100px] text-black">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-16">
             {/* FORM */}
             <motion.div
@@ -204,7 +204,7 @@ export default function DriverOpportunities() {
                       value={formData.firstName}
                       onChange={handleChange}
                       placeholder="John"
-                      className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                      className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                       required
                     />
                   </motion.div>
@@ -219,7 +219,7 @@ export default function DriverOpportunities() {
                       value={formData.lastName}
                       onChange={handleChange}
                       placeholder="Doe"
-                      className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                      className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                       required
                     />
                   </motion.div>
@@ -236,7 +236,7 @@ export default function DriverOpportunities() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                      className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                       required
                     />
                   </motion.div>
@@ -251,7 +251,7 @@ export default function DriverOpportunities() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(555) 000-0000"
-                      className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors"
+                      className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors"
                       required
                     />
                   </motion.div>
@@ -265,7 +265,7 @@ export default function DriverOpportunities() {
                     name="yearsExperience"
                     value={formData.yearsExperience}
                     onChange={handleChange}
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                     required
                   >
                     <option value="">Select experience level</option>
@@ -284,7 +284,7 @@ export default function DriverOpportunities() {
                     name="licenseType"
                     value={formData.licenseType}
                     onChange={handleChange}
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                     required
                   >
                     <option value="">Select license type</option>
@@ -304,7 +304,7 @@ export default function DriverOpportunities() {
                     onChange={handleChange}
                     placeholder="List states where you can operate (e.g., CA, TX, NY)"
                     rows="3"
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors resize-none"
                     required
                   />
                 </motion.div>
@@ -317,7 +317,7 @@ export default function DriverOpportunities() {
                     name="vehicleType"
                     value={formData.vehicleType}
                     onChange={handleChange}
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                     required
                   >
                     <option value="">Select vehicle type</option>
@@ -338,7 +338,7 @@ export default function DriverOpportunities() {
                     name="availability"
                     value={formData.availability}
                     onChange={handleChange}
-                    className="w-full bg-black border border-white/10 rounded-2xl p-4 text-white focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
+                    className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                     required
                   >
                     <option value="">Select availability</option>
@@ -349,16 +349,16 @@ export default function DriverOpportunities() {
                 </motion.div>
 
                 {/* CONTRACTOR AGREEMENT SECTION */}
-                <motion.div variants={fadeInUp} className="bg-zinc-950 border border-white/10 rounded-2xl p-8">
+                <motion.div variants={fadeInUp} className="bg-white border border-gray-300 rounded-2xl p-8">
                   <h3 className="text-lg font-bold mb-4 flex items-center gap-3">
                     <FileText size={24} className="text-[#C9A24D]" />
                     Contractor Agreement
                   </h3>
-                  <div className="bg-black rounded-lg p-6 mb-6 max-h-64 overflow-y-auto border border-white/5 scrollbar-black">
-                    <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                  <div className="bg-gray-50 rounded-lg p-6 mb-6 max-h-64 overflow-y-auto border border-gray-200 scrollbar-black">
+                    <p className="text-sm text-gray-800 leading-relaxed mb-4">
                       <strong>INDEPENDENT CONTRACTOR AGREEMENT</strong>
                     </p>
-                    <p className="text-xs text-gray-400 leading-relaxed space-y-3">
+                    <p className="text-xs text-gray-600 leading-relaxed space-y-3">
                       <span className="block mb-3">
                         This Agreement establishes the terms and conditions under which you will operate as an independent sub-contractor with Bellevated Enterprises.
                       </span>
@@ -398,7 +398,7 @@ export default function DriverOpportunities() {
                       className="mt-1 w-5 h-5 cursor-pointer accent-[#C9A24D]"
                       required
                     />
-                    <span className="text-sm text-gray-300">
+                    <span className="text-sm text-gray-700">
                       I have read and agree to the Contractor Agreement terms above. I understand my responsibilities as an independent contractor with Bellevated Enterprises.
                     </span>
                   </label>
@@ -413,7 +413,7 @@ export default function DriverOpportunities() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-white transition-all rounded-2xl flex items-center justify-center gap-3"
+                  className="w-full bg-[#C9A24D] text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-yellow-500 transition-all rounded-2xl flex items-center justify-center gap-3"
                 >
                   <Send size={20} />
                   Submit Application
@@ -443,13 +443,13 @@ export default function DriverOpportunities() {
                   <motion.div
                     key={i}
                     variants={fadeInUp}
-                    className="bg-zinc-950 border border-white/10 rounded-2xl p-6 mb-4 hover:border-[#C9A24D]/30 transition-colors"
+                    className="bg-white border border-gray-300 rounded-2xl p-6 mb-4 hover:border-[#C9A24D]/30 transition-colors"
                   >
                     <div className="flex items-start gap-3">
                       <CheckCircle size={20} className="text-[#C9A24D] flex-shrink-0 mt-1" />
                       <div>
-                        <h4 className="font-bold text-sm mb-1">{req.title}</h4>
-                        <p className="text-xs text-gray-400">{req.desc}</p>
+                        <h4 className="font-bold text-sm mb-1 text-gray-800">{req.title}</h4>
+                        <p className="text-xs text-gray-600">{req.desc}</p>
                       </div>
                     </div>
                   </motion.div>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
   FileText,
   Building2
 } from "lucide-react";
@@ -92,7 +92,7 @@ export default function RequestQuote() {
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 px-6 border-b border-white/5">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A24D]/10 rounded-full blur-[150px] -z-10" />
-        
+
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -106,7 +106,7 @@ export default function RequestQuote() {
               REQUEST A <span className="text-[#C9A24D]">QUOTE</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
-              Share your vision with us. Whether you're a vendor, hospital, government agency, or enterprise, 
+              Share your vision with us. Whether you're a vendor, hospital, government agency, or enterprise,
               we provide tailored solutions designed for your specific operational needs.
             </p>
           </motion.div>
@@ -358,9 +358,21 @@ export default function RequestQuote() {
                 We typically respond to quote requests within 24-48 business hours.
               </p>
             </motion.div>
+            <div className="mt-8 text-center">
+              <a
+                href="/Driver.pdf"
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#FFD966] to-[#BF9024] text-black font-bold rounded-md hover:scale-105 transition"
+              >
+                Download PDF File
+              </a>
+            </div>
           </motion.div>
+
         </div>
+
       </section>
+
 
       {/* INFO SECTION - PLACEHOLDER FOR YOUR CONTENT */}
       <section className="py-32 px-6 bg-zinc-950/50">

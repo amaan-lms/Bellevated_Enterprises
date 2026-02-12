@@ -132,11 +132,12 @@ export default function Consulting() {
               </div>
 
               {/* Bottom-right image */}
-              <img
-                src={ownershipImg}
-                alt="Foundational Ownership Illustration"
-                className=" absolute bottom-0 right-0 w-48 md:w-90  opacity-90 pointer-events-none"
-              />
+             <img
+  src={ownershipImg}
+  alt="Foundational Ownership Illustration"
+  className="hidden md:block absolute bottom-0 right-0 w-48 md:w-90 opacity-90 pointer-events-none"
+/>
+
             </motion.div>
 
 

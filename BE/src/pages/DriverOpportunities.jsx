@@ -75,7 +75,7 @@ export default function DriverOpportunities() {
     try {
       await axios.post(`${baseURL}/api/drivers`, formData);
       alert("Application submitted successfully!");
-      
+
       // Reset form
       setFormData({
         firstName: "", lastName: "", email: "", phone: "",
@@ -106,7 +106,7 @@ export default function DriverOpportunities() {
               <span className="text-[#C9A24D] font-mono text-sm tracking-[0.5em] uppercase mb-4 block">
                 Join Our Network
               </span>
-              <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-none mb-10">
+              <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-none mb-10">
                 DRIVER <span className="text-[#C9A24D]">OPPORTUNITIES</span>
               </h1>
               <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
@@ -389,6 +389,7 @@ export default function DriverOpportunities() {
                     </p>
                   </div>
 
+
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input
                       type="checkbox"
@@ -404,8 +405,26 @@ export default function DriverOpportunities() {
                   </label>
 
                   <p className="text-xs text-gray-500 mt-4">
-                    After submission, you will receive a formal DocuSign contract for electronic signature. This ensures secure, legally binding agreement completion.
+                    After submission, please download the contract below, sign it digitally, and email the completed copy to{" "}
+                    <a
+                      href="mailto:ceo@bellevated.com"
+                      className="font-bold text-yellow-600 hover:underline"
+                    >
+                      ceo@bellevated.com
+                    </a>{" "}
+                    for processing.
                   </p>
+
+
+                  <div className="mt-8 text-center">
+                    <a
+                      href="/Driver.pdf"
+                      download
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#FFD966] to-[#BF9024] text-black font-bold rounded-md hover:scale-105 transition"
+                    >
+                      Download PDF File
+                    </a>
+                  </div>
                 </motion.div>
 
                 <motion.button
@@ -420,6 +439,8 @@ export default function DriverOpportunities() {
                 </motion.button>
               </form>
             </motion.div>
+
+
 
             {/* REQUIREMENTS SIDEBAR */}
             <motion.div
@@ -458,6 +479,8 @@ export default function DriverOpportunities() {
             </motion.div>
           </div>
         </section>
+
+
 
         {/* CTA SECTION */}
         <section className="py-32 px-6 bg-zinc-950/50 text-center">

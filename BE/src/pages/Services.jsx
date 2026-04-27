@@ -36,13 +36,6 @@ export default function Services() {
       features: ["HIPAA Compliant", "Real-time Tracking", "Priority Routes"],
     },
     {
-      title: "Credit Restoration",
-      tagline: "FINANCIAL POSITIONING",
-      icon: <TrendingUp size={32} />,
-      desc: "Strategic restoration designed to move you from consumer to owner. We fix the foundation so you can access high-level funding.",
-      features: ["Inquiry Removal", "Revolving Debt Strategy", "Funding Readiness"],
-    },
-    {
       title: "Business Formation",
       tagline: "STRUCTURE & COMPLIANCE",
       icon: <Building2 size={32} />,
@@ -80,7 +73,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-3 gap-8"
+          className="grid lg:grid-cols-2 gap-8"
         >
           {serviceList.map((s, i) => (
             <motion.div
@@ -132,7 +125,7 @@ export default function Services() {
 
           <div className="grid md:grid-cols-4 gap-12">
             {[
-              { step: "01", name: "Assessment", desc: "We audit your current logistics or credit profile." },
+              { step: "01", name: "Assessment", desc: "We audit your current logistics or business profile." },
               { step: "02", name: "Strategy", desc: "We build a custom blueprint for your specific goal." },
               { step: "03", name: "Execution", desc: "Our team moves with precision and integrity." },
               { step: "04", name: "Elevation", desc: "Long-term growth and continuous opportunity." },
@@ -153,19 +146,19 @@ export default function Services() {
 
       {/* 4. FINAL CALL TO ACTION */}
       <div className="py-32 px-6 text-center">
-  <motion.div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-10">
-      READY FOR <span className="text-[#C9A24D]">ELITE</span> EXECUTION?
-    </h2>
+        <motion.div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-10">
+            READY FOR <span className="text-[#C9A24D]">ELITE</span> EXECUTION?
+          </h2>
 
-    <NavLink
-      to="/contact"
-      className="inline-block bg-[#C9A24D] text-black px-6 py-4 font-black uppercase tracking-widest hover:bg-white transition-colors rounded-sm"
-    >
-      Start Your Application
-    </NavLink>
-  </motion.div>
-</div>
+          <NavLink
+            to="/contact"
+            className="inline-block bg-[#C9A24D] text-black px-6 py-4 font-black uppercase tracking-widest hover:bg-white transition-colors rounded-sm"
+          >
+            Start Your Application
+          </NavLink>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -71,7 +71,6 @@ export default function About() {
               className="relative z-10 w-full max-w-md h-[300px]"
             >
               <img
-                // REPLACE THIS URL WITH YOUR BG-REMOVED PNG
                 src={logo}
                 alt="Bellevated Leadership"
                 className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(201,162,77,0.3)]"
@@ -109,7 +108,7 @@ export default function About() {
                 icon: <Shield size={28} />,
                 title: "Precision",
                 tagline: "SURGICAL ACCURACY",
-                text: "Details matter. From logistics to credit repair, we execute with surgical accuracy and focus."
+                text: "Details matter. From logistics to corporate structuring, we execute with surgical accuracy and focus."
               },
               {
                 icon: <Star size={28} />,
@@ -161,29 +160,29 @@ export default function About() {
             The Golden Rule <span className="text-[#C9A24D]">—</span> Matthew 7:12
           </div>
           <p className="mt-12 text-gray-500 font-medium max-w-xl mx-auto leading-relaxed">
-            This isn't just a verse; it is our operational manual. We treat your business, your packages, and your credit as if they were our own.
+            This isn't just a verse; it is our operational manual. We treat your business and your packages as if they were our own.
           </p>
         </motion.div>
       </section>
 
       {/* 5. CALL TO ACTION */}
-     <section className="py-32 px-6 text-center">
-  <motion.div>
-    <p className="text-gray-500 mb-6 uppercase tracking-[0.4em] text-[10px] font-bold">
-      Ready to take the next step?
-    </p>
+      <section className="py-32 px-6 text-center">
+        <motion.div>
+          <p className="text-gray-500 mb-6 uppercase tracking-[0.4em] text-[10px] font-bold">
+            Ready to take the next step?
+          </p>
 
-    <NavLink
-      to="/contact"
-      className="group text-4xl md:text-5xl font-black tracking-tighter transition-all"
-    >
-      LET&apos;S{" "}
-      <span className="text-[#C9A24D] group-hover:italic transition-all">
-        ELEVATE.
-      </span>
-    </NavLink>
-  </motion.div>
-</section>
+          <NavLink
+            to="/contact"
+            className="group text-4xl md:text-5xl font-black tracking-tighter transition-all"
+          >
+            LET&apos;S{" "}
+            <span className="text-[#C9A24D] group-hover:italic transition-all">
+              ELEVATE.
+            </span>
+          </NavLink>
+        </motion.div>
+      </section>
     </div>
   );
 }

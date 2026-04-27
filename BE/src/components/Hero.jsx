@@ -165,7 +165,7 @@ export default function Hero() {
                 title: "Consulting",
                 icon: <LineChart size={32} />,
                 desc:
-                  "Strategic business and credit consulting to fuel sustainable long-term expansion.",
+                  "Strategic business and brand consulting designed to fuel sustainable long-term expansion.",
               },
               {
                 title: "Entrepreneurship",
@@ -236,7 +236,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/60" />
           </div>
 
-          <div className="relative z-10 max-w-3]xl mx-auto">
+          <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-black mb-12 leading-none tracking-tighter">
               READY TO <br /> <span className="text-[#C9A24D]">BELLEVATE?</span>
             </h2>

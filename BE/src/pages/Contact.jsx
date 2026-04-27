@@ -201,7 +201,7 @@ export default function Contact() {
                   className="w-full bg-white border border-gray-300 rounded-2xl p-4 text-black focus:outline-none focus:border-[#C9A24D] transition-colors appearance-none"
                 >
                   <option>Courier & Logistics</option>
-                  <option>Credit Restoration</option>
+                  {/* <option>Credit Restoration</option> */}
                   <option>Business Formation</option>
                   <option>Consulting & Strategy</option>
                 </select>

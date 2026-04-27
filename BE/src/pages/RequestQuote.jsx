@@ -224,7 +224,7 @@ export default function RequestQuote() {
                   <option value="">Select a service</option>
                   <option value="courier">Courier & Logistics</option>
                   <option value="consulting">Consulting & Strategy</option>
-                  <option value="credit">Credit Restoration</option>
+                  {/* <option value="credit">Credit Restoration</option> */}
                   <option value="business">Business Formation</option>
                   <option value="multiple">Multiple Services</option>
                 </select>
